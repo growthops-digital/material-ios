@@ -1,3 +1,14 @@
+# GROWTHOPS FORK
+
+14/03/2024: 
+
+This library had not been updated in a while so I decided to fork it.
+
+This was necessary to fix issues with crashes caused by `UIGraphicsBeginImageContextWithOptions` on Xcode 15.
+This library also depends on `Motion`, which itself uses that problematic function. I have not updated the `Motion` library yet since none of our projects end up using those problematic functions either directly or indirectly.
+
+---
+
 ![Material](http://www.cosmicmind.com/material/github/material-logo.png)
 
 # Material
