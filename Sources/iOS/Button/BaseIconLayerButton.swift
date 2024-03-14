@@ -185,10 +185,10 @@ open class BaseIconLayerButton: Button {
     let insets = iconEdgeInsets
     let w = iconSize + insets.left + insets.right
     let h = iconSize + insets.top + insets.bottom
-    UIGraphicsBeginImageContext(CGSize(width: w, height: h))
-    let image = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    self.image = image
+    
+    // UPDATED BY GROWTHOPS
+    let size = CGSize(width: w, height: h)
+    self.image = UIGraphicsImageRenderer(size: size).image { _ in }
   }
   
   /// Pulse color for selected state.

@@ -30,11 +30,14 @@ extension UIWindow {
    Captures a screenshot of the contents in the apps keyWindow.
    - Returns: An optional UIImage.
    */
-  open func capture() -> UIImage? {
-    UIGraphicsBeginImageContextWithOptions(frame.size, isOpaque, Screen.scale)
-    layer.render(in: UIGraphicsGetCurrentContext()!)
-    let image = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    return image
+  open func capture() -> UIImage {
+    
+    let renderFormat = UIGraphicsImageRendererFormat.default()
+    renderFormat.opaque = isOpaque
+    renderFormat.scale = Screen.scale
+    
+    return UIGraphicsImageRenderer(size: frame.size, format: renderFormat).image { context in
+      layer.render(in: context.cgContext)
+    }
   }
 }
